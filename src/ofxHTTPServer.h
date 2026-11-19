@@ -112,7 +112,7 @@ private:
 	static int print_out_key (void *cls, enum MHD_ValueKind kind, const char *key, const char *value);
 	static int get_get_parameters (void *cls, enum MHD_ValueKind kind, const char *key, const char *value);
 
-	static int send_page (struct MHD_Connection *connection, long length, const char* page, int status_code, std::string contentType="");
+	static int send_page (struct MHD_Connection *connection, long length, const char* page, int status_code, const std::string& contentType="");
 	static int send_redirect (struct MHD_Connection *connection, const char* location, int status_code);
 
 	static void request_completed (void *cls, struct MHD_Connection *connection, void **con_cls,

@@ -9,6 +9,7 @@
 #include <cstring>
 #include <fstream>
 #include <map>
+#include <utility>
 #include "platform.h"
 
 using namespace std;
@@ -149,7 +150,7 @@ void ofxHTTPServer::request_completed (void *cls, struct MHD_Connection *connect
   instance.maxActiveClientsMutex.unlock();
 }
 
-int ofxHTTPServer::send_page (struct MHD_Connection *connection, long length, const char* page, int status_code, string contentType)
+int ofxHTTPServer::send_page (struct MHD_Connection *connection, long length, const char* page, int status_code, const std::string& contentType)
 {
   int ret;
   struct MHD_Response *response;
@@ -206,7 +207,7 @@ ofxHTTPServer::~ofxHTTPServer() {
 }
 
 void ofxHTTPServer::setAllowed_IP_List( vector<string> listOfIPs){
-	allowedIPs = listOfIPs;
+	allowedIPs = std::move(listOfIPs);
 }
 
 
